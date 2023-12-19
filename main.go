@@ -17,6 +17,8 @@ func main() {
 	remove(dictio, "key3")
 
 	fmt.Println(dictio)
+
+	List(dictio)
 }
 
 func get(dictionnaire map[string]string, key string) {
@@ -29,4 +31,10 @@ func add(dictionnaire map[string]string, key string, value string) {
 
 func remove(dictionnaire map[string]string, key string) {
 	delete(dictionnaire, key)
+}
+
+func List(dictionnaire map[string]string) {
+	for word := range dictionnaire {
+		fmt.Println("key : " + word, "value : " + dictionnaire[word])
+	} 
 }
