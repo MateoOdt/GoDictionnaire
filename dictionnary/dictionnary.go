@@ -4,20 +4,33 @@ import (
 	"fmt"
 )
 
-func Get(dictionnaire map[string]string, key string) {
-	fmt.Println("Definition for", key, ":", dictionnaire[key])
+/// Object Structure
+type Dictionary struct {
+	entries map[string]string
 }
 
-func Add(dictionnaire map[string]string, key string, value string) {
-	dictionnaire[key] = value
+///Constructor
+func NewDictionary() *Dictionary {
+	return &Dictionary{
+			entries: make(map[string]string),
+	}
 }
 
-func Remove(dictionnaire map[string]string, key string) {
-	delete(dictionnaire, key)
+///Functions
+func (d *Dictionary) Get(key string) string {
+	return d.entries[key]
 }
 
-func List(dictionnaire map[string]string) {
-	for word := range dictionnaire {
-		fmt.Println("key : " + word, "value : " + dictionnaire[word])
-	} 
+func (d *Dictionary) Add(key, value string) {
+	d.entries[key] = value
+}
+
+func (d *Dictionary) Remove(key string) {
+	delete(d.entries, key)
+}
+
+func (d *Dictionary) List() {
+	for word := range d.entries {
+		fmt.Println("key:", word, "value:", d.entries[word])
+	}
 }

@@ -5,19 +5,26 @@ import (
 	"Dictionnaire/dictionnary"
 )
 
+
 func main() {
 
-	dictio := make(map[string]string)
-	dictio["key1"] = "10"
-	dictio["key2"] = "12"
+	dictio := dictionnary.NewDictionary()
 
-	fmt.Println(dictio)
+	dictio.Add("key1", "10")
+	dictio.Add("key2", "12")
 
-	dictionnary.Add(dictio, "key3", "13")
-	dictionnary.Get(dictio, "key3")
-	dictionnary.Remove(dictio, "key3")
+	fmt.Println("Dictionary before operations:")
+	dictio.List()
 
-	fmt.Println(dictio)
+	// Add a new entry
+	dictio.Add("key3", "13")
 
-	dictionnary.List(dictio)
+	// Get the value for key3
+	fmt.Println("Definition for key3:", dictio.Get("key3"))
+
+	// Remove key3
+	dictio.Remove("key3")
+
+	fmt.Println("Dictionary after operations:")
+	dictio.List()
 }
