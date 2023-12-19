@@ -1,3 +1,3 @@
-module GO-PROJECT/Dictionnaire/main.go
+module Dictionnaire
 
 go 1.21.5
