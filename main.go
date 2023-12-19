@@ -6,27 +6,27 @@ import (
 
 func main() {
 
-	dictio := make(map[string]int)
-	dictio["key1"] = 10
-	dictio["key2"] = 12
+	dictio := make(map[string]string)
+	dictio["key1"] = "10"
+	dictio["key2"] = "12"
 
 	fmt.Println(dictio)
 
-	add(dictio, "key3", 13)
+	add(dictio, "key3", "13")
 	get(dictio, "key3")
 	remove(dictio, "key3")
+
 	fmt.Println(dictio)
-
 }
 
-func get(dictionnaire map[string]int, key string) {
-	fmt.Println(dictionnaire[key])
+func get(dictionnaire map[string]string, key string) {
+	fmt.Println("Definition for", key, ":", dictionnaire[key])
 }
 
-func add(dictionnaire map[string]int, key string, value int) {
+func add(dictionnaire map[string]string, key string, value string) {
 	dictionnaire[key] = value
 }
 
-func remove(dictionnaire map[string]int, key string) {
+func remove(dictionnaire map[string]string, key string) {
 	delete(dictionnaire, key)
 }
