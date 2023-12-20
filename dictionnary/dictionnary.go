@@ -62,10 +62,8 @@ func (d *Dictionary) Remove(nom string) {
 }
 
 // List displays all entries in the dictionary
-func (d *Dictionary) List() {
-	for _, entry := range d.entries {
-		fmt.Println("Nom:", entry.Nom, "Definition:", entry.Definition)
-	}
+func (d *Dictionary) List() []Entry {
+	return d.entries
 }
 
 func HandleWelcomeRoot(w http.ResponseWriter, r *http.Request) {
@@ -104,7 +102,8 @@ func HandleRemove(d *Dictionary) http.HandlerFunc {
 
 func HandleList(d *Dictionary) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		d.List()
+		entries := d.List()
+		json.NewEncoder(w).Encode(entries)
 	}
 }
 
