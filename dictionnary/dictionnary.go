@@ -89,6 +89,10 @@ func HandleAdd(d *Dictionary) http.HandlerFunc {
 		}
 		d.Add(entry.Nom, entry.Definition)
 		w.WriteHeader(http.StatusCreated)
+
+		///Return Successfull message on Add Entry
+		response := "Entry Successfull"
+		json.NewEncoder(w).Encode(response)
 	}
 }
 
