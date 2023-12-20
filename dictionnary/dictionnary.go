@@ -66,6 +66,7 @@ func (d *Dictionary) List() []Entry {
 	return d.entries
 }
 
+///Endpoints :
 func HandleWelcomeRoot(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Hello, World!"))
 }
