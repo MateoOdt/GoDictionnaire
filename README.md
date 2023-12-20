@@ -1,6 +1,6 @@
 # Repository GoLang Back-End Course
 
-![GoLang Logo](https://golang.org/doc/gopher/pencil/gopherswrench.jpg)
+![GoLang Gopher](https://blog.golang.org/gopher/gopher.png)
 
 Ce repository a été créé par Mateo Oudart pour le cours sur le langage back-end Go dispensé par Mr. Aziz Mounir. Ce cours fait partie de la 4ème année d'étude en développement web et mobile, dans le parcours de l'école Estiam : WMD (Web & Mobile Development).
 
@@ -18,6 +18,8 @@ Ce repository a été créé par Mateo Oudart pour le cours sur le langage back-
 
 ```go run main.go
 
+```
+
 ## Contenu du Repository
 
 🔄 / : Route principale, retourne "Hello, World!"
@@ -32,4 +34,7 @@ Ce repository a été créé par Mateo Oudart pour le cours sur le langage back-
 dictionnary.go: Définition et méthodes pour le dictionnaire.
 main.go: Fichier principal de l'application.
 dictionary.json: Fichier de stockage des données du dictionnaire.
+
+```
+
 ```
