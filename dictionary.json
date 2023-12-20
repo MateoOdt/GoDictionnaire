@@ -22,5 +22,13 @@
   {
     "nom": "NewFile",
     "definition": "ecrasementFile"
+  },
+  {
+    "nom": "TESTEcrasement",
+    "definition": "donnée"
+  },
+  {
+    "nom": "NewFile",
+    "definition": "ecrasementFile"
   }
 ]

@@ -40,20 +40,24 @@ func (d *Dictionary) Get(nom string) string {
 
 // Add adds a new entry to the dictionary
 func (d *Dictionary) Add(nom, definition string) {
-	entry := Entry{Nom: nom, Definition: definition}
-	d.entries = append(d.entries, entry)
-	d.saveToFile()
-}
+	go func() {
+		entry := Entry{Nom: nom, Definition: definition}
+		d.entries = append(d.entries, entry)
+		d.saveToFile()
+	}()
+} 
 
 // Remove removes an entry from the dictionary
 func (d *Dictionary) Remove(nom string) {
-	for i, entry := range d.entries {
-		if entry.Nom == nom {
-			d.entries = append(d.entries[:i], d.entries[i+1:]...)
-			break
+	go func() {
+		for i, entry := range d.entries {
+			if entry.Nom == nom {
+				d.entries = append(d.entries[:i], d.entries[i+1:]...)
+				break
+			}
 		}
-	}
-	d.saveToFile()
+		d.saveToFile()
+	}()
 }
 
 // List displays all entries in the dictionary
