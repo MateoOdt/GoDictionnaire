@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"net/http"
 )
 
 // Entry represents a dictionary entry with a name and definition
@@ -64,6 +65,46 @@ func (d *Dictionary) Remove(nom string) {
 func (d *Dictionary) List() {
 	for _, entry := range d.entries {
 		fmt.Println("Nom:", entry.Nom, "Definition:", entry.Definition)
+	}
+}
+
+func HandleWelcomeRoot(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Hello, World!"))
+}
+
+func HandleGet(d *Dictionary) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		nom := r.URL.Query().Get("nom")
+		definition := d.Get(nom)
+		response := map[string]string{"nom": nom, "definition": definition}
+		json.NewEncoder(w).Encode(response)
+	}
+}
+
+func HandleAdd(d *Dictionary) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var entry Entry
+		err := json.NewDecoder(r.Body).Decode(&entry)
+		if err != nil {
+			http.Error(w, "Invalid request body", http.StatusBadRequest)
+			return
+		}
+		d.Add(entry.Nom, entry.Definition)
+		w.WriteHeader(http.StatusCreated)
+	}
+}
+
+func HandleRemove(d *Dictionary) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		nom := r.URL.Query().Get("nom")
+		d.Remove(nom)
+		w.WriteHeader(http.StatusOK)
+	}
+}
+
+func HandleList(d *Dictionary) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		d.List()
 	}
 }
 

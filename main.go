@@ -1,28 +1,19 @@
 package main
 
 import (
-	"fmt"
 	"Dictionnaire/dictionnary"
+	"net/http"
 )
 
 func main() {
-	dictio := dictionnary.NewDictionary("dictionary.json")
+	dict := dictionnary.NewDictionary("dictionary.json")
 
-	dictio.Add("TESTEcrasement", "donnée")
-	dictio.Add("NewFile", "ecrasementFile")
+	http.HandleFunc("/", dictionnary.HandleWelcomeRoot)
 
-	fmt.Println("Dictionary before operations:")
-	dictio.List()
+	http.HandleFunc("/get", dictionnary.HandleGet(dict))
+	http.HandleFunc("/add", dictionnary.HandleAdd(dict))
+	http.HandleFunc("/remove", dictionnary.HandleRemove(dict))
+	http.HandleFunc("/list", dictionnary.HandleList(dict))
 
-	// Add a new entry
-	dictio.Add("key3", "Definition 3")
-
-	// Get the definition for key3
-	fmt.Println("Definition for key3:", dictio.Get("key3"))
-
-	// Remove key3
-	dictio.Remove("key3")
-
-	fmt.Println("Dictionary after operations:")
-	dictio.List()
+	http.ListenAndServe(":8080", nil)
 }
