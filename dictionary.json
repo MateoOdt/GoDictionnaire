@@ -1,0 +1,26 @@
+[
+  {
+    "nom": "key1",
+    "definition": "Definition 1"
+  },
+  {
+    "nom": "key2",
+    "definition": "Definition 2"
+  },
+  {
+    "nom": "key1",
+    "definition": "Definition 1"
+  },
+  {
+    "nom": "key2",
+    "definition": "Definition 2"
+  },
+  {
+    "nom": "TESTEcrasement",
+    "definition": "donnée"
+  },
+  {
+    "nom": "NewFile",
+    "definition": "ecrasementFile"
+  }
+]

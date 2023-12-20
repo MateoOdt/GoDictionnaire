@@ -5,21 +5,19 @@ import (
 	"Dictionnaire/dictionnary"
 )
 
-
 func main() {
+	dictio := dictionnary.NewDictionary("dictionary.json")
 
-	dictio := dictionnary.NewDictionary()
-
-	dictio.Add("key1", "10")
-	dictio.Add("key2", "12")
+	dictio.Add("TESTEcrasement", "donnée")
+	dictio.Add("NewFile", "ecrasementFile")
 
 	fmt.Println("Dictionary before operations:")
 	dictio.List()
 
 	// Add a new entry
-	dictio.Add("key3", "13")
+	dictio.Add("key3", "Definition 3")
 
-	// Get the value for key3
+	// Get the definition for key3
 	fmt.Println("Definition for key3:", dictio.Get("key3"))
 
 	// Remove key3
