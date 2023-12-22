@@ -4,6 +4,10 @@
 
 Ce repository a été créé par Mateo Oudart pour le cours sur le langage back-end Go dispensé par Mr. Aziz Mounir. Ce cours fait partie de la 4ème année d'étude en développement web et mobile, dans le parcours de l'école Estiam : WMD (Web & Mobile Development).
 
+## Postman Workspace to test the API : 
+
+https://red-satellite-839868.postman.co/workspace/Dictionary-API~f068e27a-1efa-48e7-b8e1-50682fc52f8a/request/30673310-7b4d4bba-d4e3-4b1a-a0c9-67702fe7648c
+
 ## Comment Installer le Repository
 
 1. **Clonez le Repository :**
